@@ -54,27 +54,28 @@
     for (int i = 0; i < numberOfPremiumCheeseNames; i++) {
         NSString *currentPremiumCheese = premiumCheeseNames[i];
         for (int j = 0; j < numberOfCheesesInStock; j++) {
-            
             currentCheesesInStock = cheesesInStock[j];
-            NSLog(@"\n\n\n\n\npre:%@", currentPremiumCheese);
-            NSLog(@"curr:%@", currentCheesesInStock);
-        }
             if ([currentPremiumCheese isEqualToString:currentCheesesInStock]) {
-                NSLog(@"bool: %d\n\n\n\n\n\n",[currentPremiumCheese isEqualToString:currentCheesesInStock]);
                 cheese = [cheese stringByAppendingString:currentPremiumCheese];
                 return cheese;
-            } else {
-                return @"No premium cheeses in stock.";
             }
+        }
         
     }
-    
-    return cheese;
+        return @"No premium cheeses in stock.";
 }
 
 
 - (NSArray *)arrayByConvertingMoneyBagsIntoPaperBills:(NSArray *)moneyBags {
-    return nil;
+    NSUInteger numberOfMoneyBags = [moneyBags count];
+    NSMutableArray *paperBills = [NSMutableArray new];
+    for (int i = 0; i < numberOfMoneyBags; i++) {
+        NSString *currentMoneyBag = moneyBags[i];
+        NSUInteger currentMoneyBagCount = [currentMoneyBag length];
+        NSString *paperBill = [NSString stringWithFormat: @"$%li", currentMoneyBagCount];
+        [paperBills addObject:paperBill];
+    }
+    return paperBills;
 }
 
 
